@@ -8,7 +8,10 @@
 				<div class="bubble-fields"><label for="phone">Phone # </label> <span> {{ form.phone}}</span>{% for error in form.phone.errors %}
                         <span class="help-inline">[{{ error }}]</span><br>
                     {% endfor %}</div>
-				<div class="bubble-fields"><label for="email">Email </label> <span> {{ form.email}}</span>{% for error in form.email.errors %}
+        <div class="bubble-fields"><label for="phone">Address</label> <span> {{ form.address}}</span>{% for error in form.address.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+        <div class="bubble-fields"><label for="email">Email </label> <span> {{ form.email}}</span>{% for error in form.email.errors %}
                         <span class="help-inline">[{{ error }}]</span><br>
                     {% endfor %}</div>
 				<div class="bubble-fields"v><label for="people">No of People </label> <span> {{ form.noofpeople}}</span>{% for error in form.noofpeople.errors %}

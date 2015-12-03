@@ -1,11 +1,14 @@
-    <div class="submission-form myStats">
-        <form action="uploadoffer" target="upload-form" id="upload-offer" method="post" enctype="multipart/form-data">
-			{{ form.hidden_tag() }}
-            <fieldset>
+<div class="submission-form myStats">
+    <form action="uploadoffer" target="upload-form" id="upload-offer" method="post" enctype="multipart/form-data">
+	     {{ form.hidden_tag() }}
+      <fieldset>
                 <div class="bubble-fields"><label for="name">Name</label> <span> {{ form.name}}</span>{% for error in form.name.errors %}
                         <span class="help-inline">[{{ error }}]</span><br>
                     {% endfor %}</div>
 				<div class="bubble-fields"><label for="phone">Phone #</label> <span> {{ form.phone}}</span>{% for error in form.phone.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+        <div class="bubble-fields"><label for="phone">Address</label> <span> {{ form.address}}</span>{% for error in form.address.errors %}
                         <span class="help-inline">[{{ error }}]</span><br>
                     {% endfor %}</div>
 				<div class="bubble-fields"><label for="email">Email</label> <span> {{ form.email}}</span>{% for error in form.email.errors %}
@@ -20,8 +23,9 @@
 				<div class="bubble-fields"><label for="notes">Notes </label> <span> {{ form.notes}}</span>{% for error in form.notes.errors %}
                         <span class="help-inline">[{{ error }}]</span><br>
                     {% endfor %}</div>
-                <div style="text-align:center;float:left;width:100%;"><button id="offer-help-btn" type="button" onclick="uploadOffer();"> Offer</button></div>
-            </fieldset>
-
-        </form>
-    </div>
+        <div style="text-align:center;float:left;width:100%;">
+          <button id="offer-help-btn" type="button" onclick="uploadOffer();"> Offer</button>
+        </div>
+      </fieldset>
+    </form>
+</div>

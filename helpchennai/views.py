@@ -22,7 +22,7 @@ def getPoints():
 	for address in chennaiCollection.find({"geometry":{"$geoWithin": {"$geometry": {"type" : "Polygon" ,"coordinates": boundingBox}}}, "satisfied":0}):
 		parcelJSON.append({"type":"Feature", "geometry":address["geometry"],"properties":{"type":address["properties"]["type"],"id":str(address["_id"])}})
 	return jsonify(allpoints = {"type":"FeatureCollection", "features":parcelJSON})
-	
+
 @app.route('/requesthelp', methods=['GET'])
 def requestBubble():
 	form = RequestHelp()
@@ -32,7 +32,7 @@ def requestBubble():
 def offerBubble():
 	form = OfferHelp()
 	return render_template('offer-help.html', form = form)
-	
+
 @app.route('/uploadrequest', methods=['POST'])
 def uploadRequest():
 	form = RequestHelp()
@@ -44,6 +44,7 @@ def uploadRequest():
 		document["geometry"]["coordinates"][0]  = float(form.lng.data)
 		document["properties"]["name"]  = form.name.data
 		document["properties"]["phone"]  = form.phone.data
+		document["properties"]["address"]  = form.address.data
 		document["properties"]["email"]  = form.email.data
 		document["properties"]["noofpeople"]  = form.noofpeople.data
 		document["properties"]["service"]  = form.request.data
@@ -66,6 +67,7 @@ def uploadOffer():
 		document["geometry"]["coordinates"][0]  = float(form.lng.data)
 		document["properties"]["name"]  = form.name.data
 		document["properties"]["phone"]  = form.phone.data
+		document["properties"]["address"]  = form.address.data
 		document["properties"]["email"]  = form.email.data
 		document["properties"]["noofpeople"]  = form.noofpeople.data
 		document["properties"]["service"]  = form.offer.data
@@ -76,7 +78,7 @@ def uploadOffer():
 		return Response("1",mimetype='text' )
 	else:
 		return render_template('offer-help.html', form = form)
-		
+
 @app.route('/showinfo', methods=['GET'])
 def showInfo():
 	chennaiCollection = db["chennai"]
@@ -85,4 +87,13 @@ def showInfo():
 		 notes = document["properties"]["notes"]
 	else:
 		notes = ""
-	return render_template('show-info.html',name=document["properties"]["name"],phone=document["properties"]["phone"],email=document["properties"]["email"],noofpeople=document["properties"]["noofpeople"],type=document["properties"]["type"],service=document["properties"]["service"], id=str(document["_id"]), notes=notes)
+	if "address" in document["properties"]:
+		 address = document["properties"]["address"]
+	else:
+		address = ""
+	return render_template('show-info.html',
+			name=document["properties"]["name"],phone=document["properties"]["phone"],
+			address=address,
+			email=document["properties"]["email"],noofpeople=document["properties"]["noofpeople"],
+			type=document["properties"]["type"],service=document["properties"]["service"],
+			id=str(document["_id"]), notes=notes)

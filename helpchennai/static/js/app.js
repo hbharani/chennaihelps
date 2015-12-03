@@ -32,12 +32,12 @@ function getBB() {
 function uploadRequest(e) {
 	if (!e) var e = window.event;
 		e.cancelBubble = true;
-    if (e.stopPropagation) 
+    if (e.stopPropagation)
 		e.stopPropagation();
 	// ajax to upload file
 	$('#lat').val(marker.getPosition().lat());
 	$('#lng').val(marker.getPosition().lng());
-	
+
 	if ($( "#request" ).val() === "Select")
 	{
 		alert("Please choose request type.");
@@ -73,18 +73,18 @@ function uploadRequest(e) {
 function uploadOffer() {
 	if (!e) var e = window.event;
 		e.cancelBubble = true;
-    if (e.stopPropagation) 
+    if (e.stopPropagation)
 		e.stopPropagation();
 	// ajax to upload file
 	$('#lat').val(marker.getPosition().lat());
 	$('#lng').val(marker.getPosition().lng());
-	
+
 	if ($( "#offer" ).val() === "Select")
 	{
 		alert("Please choose offer type.");
 		return;
 	}
-	
+
 	var form_data = new FormData($('#upload-offer')[0]);
 	console.log(form_data);
 	console.log($("#upload-offer"));
@@ -160,7 +160,7 @@ function initialize() {
 		});
 		//alert("dragged");
 	});
-	
+
 	google.maps.event.addListener(map, 'click', function(event) {
 
 		console.log("zoom:" + map.getZoom());
@@ -199,7 +199,7 @@ function initialize() {
 						var b = document.getElementById("offer-help-map");
 						b.onclick = function() {showOfferHelp(); return false;}
 						});
-						
+
 		}
 	});
 	var a = document.getElementById("request-help");
@@ -231,7 +231,7 @@ function getUserLocation() {
 							}
 							map.setCenter(userLocation);
 							marker.setPosition(userLocation);
-							
+
 						},
 						function(error) {
 							alert(
@@ -273,7 +273,7 @@ dataListenEvent = map.data.addListener('click', function(event)
 				});
 
 map.data.setStyle(function(feature) {
-var color; 
+var color;
 var check = feature.getProperty("type");
 if (typeof check !== "undefined" && check==="Offering") {
 color = 'green';
@@ -357,7 +357,7 @@ function infoBubbleHelp(msg,location)
 							// then, remove the infowindows name from the array
 						});
 	marker.setVisible(true);
-	
+
 
 }
 
@@ -377,5 +377,5 @@ function hideTopMenu()
 {
 	$( "#top-menu" ).hide();
 	$( "#outside-tn" ).show();
-	
+
 }

@@ -203,14 +203,14 @@ border: 2px solid #b30000;
 background: #13cb61;
 }
 input[type="file"]{
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
     position:absolute;
     float: left;
     display:inline-block;
     width: 100px;
     font-weight: 700;
     top:0; left:0;
-    opacity:0; 
+    opacity:0;
     height: 30px;
     cursor: pointer;
 }
@@ -223,11 +223,11 @@ input[type="file"]{
 .choose-file {
     position:relative;
     font-weight: 700;
-    display:inline-block;    
+    display:inline-block;
 	border-radius:2px;
     transition: all 0.3s;
     border: 2px #ccc solid;
-    width:78px; 
+    width:78px;
     float: left;
     padding: 4px 4px 4px 8px;
     color: #7f7f7f;
@@ -255,13 +255,13 @@ input[type="file"]{
     font-weight: 500 !important;
 }
 :-moz-placeholder { /* Firefox 18- */
-   color: #fff;  
+   color: #fff;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #373737;  
+   color: #373737;
 }
-:-ms-input-placeholder {  
-   color: #373737;  
+:-ms-input-placeholder {
+   color: #373737;
 }
 
 
