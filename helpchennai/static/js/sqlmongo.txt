@@ -1,0 +1,2 @@
+ db.address.update({"properties.ADDRESS": "20 SKYVIEW SHORES TC NE"},{$unset:{have:0}})
+  db.bills.remove({"City DB Address":"20 SKYVIEW SHORES TC NE"})

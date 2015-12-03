@@ -1,0 +1,27 @@
+    <div class="submission-form myStats">
+        <form action="uploadrequest" target="upload-form" id="upload-request" method="post" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+            <fieldset>
+                <div class="bubble-fields"><label for="name">Name </label> <span> {{ form.name}}</span>{% for error in form.name.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+				<div class="bubble-fields"><label for="phone">Phone # </label> <span> {{ form.phone}}</span>{% for error in form.phone.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+				<div class="bubble-fields"><label for="email">Email </label> <span> {{ form.email}}</span>{% for error in form.email.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+				<div class="bubble-fields"v><label for="people">No of People </label> <span> {{ form.noofpeople}}</span>{% for error in form.noofpeople.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+				<div class="bubble-fields"><label for="request">Request </label> <span> {{ form.request}}</span>{% for error in form.request.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+				<div class="bubble-fields"><label for="notes">Notes </label> <span> {{ form.notes}}</span>{% for error in form.notes.errors %}
+                        <span class="help-inline">[{{ error }}]</span><br>
+                    {% endfor %}</div>
+                <div style="text-align:center;float:left;width:100%;"><button id="request-help-btn" type="button" onclick="uploadRequest();"> Request</button></div>
+            </fieldset>
+
+        </form>
+    </div>
