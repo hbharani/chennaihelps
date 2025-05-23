@@ -1,31 +1,60 @@
 <div class="submission-form myStats">
-    <form action="uploadoffer" target="upload-form" id="upload-offer" method="post" enctype="multipart/form-data">
-	     {{ form.hidden_tag() }}
-      <fieldset>
-                <div class="bubble-fields"><label for="name">Name</label> <span> {{ form.name}}</span>{% for error in form.name.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-				<div class="bubble-fields"><label for="phone">Phone #</label> <span> {{ form.phone}}</span>{% for error in form.phone.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-        <div class="bubble-fields"><label for="phone">Address</label> <span> {{ form.address}}</span>{% for error in form.address.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-				<div class="bubble-fields"><label for="email">Email</label> <span> {{ form.email}}</span>{% for error in form.email.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-				<div class="bubble-fields"><label for="people">No of People</label> <span> {{ form.noofpeople}}</span>{% for error in form.noofpeople.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-				<div class="bubble-fields"><label for="offer">Offer</label> <span> {{ form.offer}}</span>{% for error in form.offer.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-				<div class="bubble-fields"><label for="notes">Notes </label> <span> {{ form.notes}}</span>{% for error in form.notes.errors %}
-                        <span class="help-inline">[{{ error }}]</span><br>
-                    {% endfor %}</div>
-        <div style="text-align:center;float:left;width:100%;">
-          <button id="offer-help-btn" type="button" onclick="uploadOffer();"> Offer</button>
-        </div>
-      </fieldset>
+    <form action="{{ form_action_url }}" target="upload-form" id="upload-offer" method="post" enctype="multipart/form-data">
+        <!-- Hidden fields for latitude and longitude, populated by JavaScript -->
+        <input type="hidden" id="lat" name="lat" value="">
+        <input type="hidden" id="lng" name="lng" value="">
+
+        <fieldset>
+            <div class="bubble-fields">
+                <label for="name">Name</label>
+                <span><input type="text" id="name" name="name" required></span>
+                <span class="help-inline" id="name_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="phone">Phone #</label>
+                <span><input type="tel" id="phone" name="phone" required></span>
+                <span class="help-inline" id="phone_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="address">Address</label>
+                <span><textarea id="address" name="address"></textarea></span>
+                <span class="help-inline" id="address_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="email">Email</label>
+                <span><input type="email" id="email" name="email"></span>
+                <span class="help-inline" id="email_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="noofpeople">No of People</label>
+                <span>
+                    <select id="noofpeople" name="noofpeople">
+                        {% for value, display in [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10'), ('11', '11'), ('12', '12'), ('13', '13'), ('14', '14'), ('15', '15'), ('16', '16'), ('17', '17'), ('18', '18'), ('19', '19'), ('>20', '>20')] %}
+                            <option value="{{ value }}">{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+                <span class="help-inline" id="noofpeople_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="offer_service">Offer</label>
+                <span>
+                    <select id="offer_service" name="offer_service" required>
+                        {% for service in services_choices %}
+                            <option value="{{ service }}">{{ service }}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+                <span class="help-inline" id="offer_service_errors"></span>
+            </div>
+            <div class="bubble-fields">
+                <label for="notes">Notes </label>
+                <span><textarea id="notes" name="notes" maxlength="200"></textarea></span>
+                <span class="help-inline" id="notes_errors"></span>
+            </div>
+            <div style="text-align:center;float:left;width:100%;">
+                <button id="offer-help-btn" type="button" onclick="uploadOffer();">Offer</button>
+            </div>
+        </fieldset>
     </form>
 </div>
